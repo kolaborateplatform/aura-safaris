@@ -2,18 +2,18 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full" style={{ background: '#eeeeee', borderTop: '3px solid #f8b333' }}>
+    <footer className="w-full" style={{ background: '#eeeeee', borderTop: '10px solid #f8b333' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* First Row: Four Columns */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-6 border-b border-gray-300">
           {/* Column 1: Logo and text */}
           <div>
             <img src="/images/logo.png" alt="Aura Logo" className="h-10 mb-3" />
-            <p className="text-sm text-gray-700">Building the future of digital experiences.</p>
+            <p className="text-sm text-gray-700">Explore the untamed beauty of Uganda, Kenya, Tanzania,and Rwanda with Aura Safaris.</p>
           </div>
           {/* Column 2 */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Quick Links</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Adventures</h3>
             <ul className="space-y-2">
               <li><Link href="/" className="hover:underline">Home</Link></li>
               <li><Link href="/about" className="hover:underline">About</Link></li>
@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
           {/* Column 3 */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Legal</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">About</h3>
             <ul className="space-y-2">
               <li><Link href="/privacy" className="hover:underline">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:underline">Terms of Service</Link></li>
@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
           {/* Column 4 */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Contact</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Contact Us</h3>
             <p className="text-sm text-gray-700">info@aura.com<br />+123 456 7890</p>
           </div>
         </div>

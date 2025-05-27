@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.20.0",
+    "@uploadthing/react": "^7.3.1",
+    "convex": "^1.24.1",
     "next": "15.3.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "uploadthing": "^7.7.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

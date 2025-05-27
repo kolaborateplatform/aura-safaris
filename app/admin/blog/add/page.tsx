@@ -1,41 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { useMutation, useQuery } from "convex/react";
+import { useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { Id } from "../../../../convex/_generated/dataModel";
 import AdminSidebar from "@/components/AdminSidebar";
 import CustomUploadButton from "@/components/UploadButton";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
-export default function AddTourPage() {
+export default function AddBlogPage() {
   const router = useRouter();
-  const createTour = useMutation(api.tours.create);
-  const destinations = useQuery(api.destinations.list);
+  const createBlog = useMutation(api.blog.create);
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: 0,
-    duration: "",
-    destinationId: "",
-    imageUrl: "",
+    title: "",
+    content: "",
+    author: "",
     status: "draft",
+    imageUrl: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     try {
-      await createTour({
+      await createBlog({
         ...formData,
-        price: Number(formData.price),
-        destinationId: formData.destinationId as Id<"destinations">,
       });
-      router.push("/admin/tours");
+      router.push("/admin/blog");
     } catch (error) {
-      console.error("Error creating tour:", error);
+      console.error("Error creating blog:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -49,71 +43,77 @@ export default function AddTourPage() {
     <div className="min-h-screen bg-gray-100">
       <div className="flex">
         <AdminSidebar />
+
+        {/* Main Content */}
         <div className="flex-1 p-8">
           <div className="max-w-2xl mx-auto">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Add New Tour</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">Add New Blog Post</h1>
+
             <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6">
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tour Name</label>
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+                  Title
+                </label>
                 <input
                   type="text"
-                  value={formData.name}
-                  onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                  id="title"
+                  value={formData.title}
+                  onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
+
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Destination</label>
-                <select
-                  value={formData.destinationId}
-                  onChange={e => setFormData(prev => ({ ...prev, destinationId: e.target.value }))}
+                <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
+                  Content
+                </label>
+                <textarea
+                  id="content"
+                  value={formData.content}
+                  onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
+                  rows={6}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="author" className="block text-sm font-medium text-gray-700 mb-1">
+                  Author
+                </label>
+                <input
+                  type="text"
+                  id="author"
+                  value={formData.author}
+                  onChange={(e) => setFormData(prev => ({ ...prev, author: e.target.value }))}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+                  Status
+                </label>
+                <select
+                  id="status"
+                  value={formData.status}
+                  onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  <option value="">Select a destination</option>
-                  {destinations?.map(dest => (
-                    <option key={dest._id} value={dest._id}>
-                      {dest.name}
-                    </option>
-                  ))}
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
                 </select>
               </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Duration (days)</label>
-                <input
-                  type="text"
-                  value={formData.duration}
-                  onChange={e => setFormData(prev => ({ ...prev, duration: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
-                <input
-                  type="number"
-                  value={formData.price}
-                  onChange={e => setFormData(prev => ({ ...prev, price: Number(e.target.value) }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                <textarea
-                  value={formData.description}
-                  onChange={e => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                  rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tour Image</label>
+
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Featured Image
+                </label>
                 <CustomUploadButton
                   onUploadComplete={handleImageUpload}
-                  onUploadError={error => console.error("Upload error:", error)}
+                  onUploadError={(error) => console.error("Upload error:", error)}
                 />
                 {formData.imageUrl && (
                   <div className="mt-2">
@@ -125,6 +125,7 @@ export default function AddTourPage() {
                   </div>
                 )}
               </div>
+
               <div className="flex justify-end space-x-4">
                 <button
                   type="button"
@@ -138,7 +139,7 @@ export default function AddTourPage() {
                   disabled={isSubmitting}
                   className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50"
                 >
-                  {isSubmitting ? "Creating..." : "Create Tour"}
+                  {isSubmitting ? "Creating..." : "Create Blog Post"}
                 </button>
               </div>
             </form>

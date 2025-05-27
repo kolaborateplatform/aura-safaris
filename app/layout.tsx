@@ -2,16 +2,17 @@ import { type Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { ConvexClientProvider } from "./ConvexClientProvider";
 import LayoutWrapper from '@/components/LayoutWrapper'
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
   subsets: ['latin'],
+  variable: '--font-geist-sans',
 })
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
   subsets: ['latin'],
+  variable: '--font-geist-mono',
 })
 
 export const metadata: Metadata = {
@@ -21,18 +22,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-          <LayoutWrapper>
-            {children}
-          </LayoutWrapper>
+          <ConvexClientProvider>
+            <LayoutWrapper>
+              {children}
+            </LayoutWrapper>
+          </ConvexClientProvider>
         </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
