@@ -1,5 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
+import AdminSidebar from '@/components/AdminSidebar';
 
 export default async function AdminPage() {
   const session = await auth();
@@ -19,23 +20,7 @@ export default async function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex">
-        {/* Sidebar */}
-        <div className="w-64 min-h-screen bg-white shadow-md">
-          <div className="p-4">
-            <h2 className="text-xl font-semibold text-gray-800">Admin Panel</h2>
-          </div>
-          <nav className="mt-4">
-            <div className="px-4 py-2">
-              <a href="/admin" className="block text-gray-600 hover:text-gray-900">Dashboard</a>
-            </div>
-            <div className="px-4 py-2">
-              <a href="/admin/tours" className="block text-gray-600 hover:text-gray-900">Tours</a>
-            </div>
-            <div className="px-4 py-2">
-              <a href="/admin/blog" className="block text-gray-600 hover:text-gray-900">Blog</a>
-            </div>
-          </nav>
-        </div>
+        <AdminSidebar />
 
         {/* Main Content */}
         <div className="flex-1 p-8">
