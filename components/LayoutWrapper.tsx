@@ -10,7 +10,7 @@ export default function LayoutWrapper({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isAuthPage = pathname === '/sign-in' || pathname === '/admin';
+  const isAuthPage = pathname === '/sign-in' || pathname.startsWith('/admin');
 
   return (
     <>
