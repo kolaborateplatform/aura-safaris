@@ -10,8 +10,9 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("Upload complete for userId:", metadata);
-      console.log("File URL:", file.ufsUrl);
-      return { url: file.ufsUrl };
+      // Always construct the public utfs.io URL from file.key
+      const publicUrl = `https://utfs.io/f/${file.key}`;
+      return { url: publicUrl };
     }),
 } satisfies FileRouter;
 
