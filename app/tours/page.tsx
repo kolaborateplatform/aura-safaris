@@ -1,43 +1,28 @@
+"use client";
+
 import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Image from 'next/image';
-
-const tours = [
-  {
-    id: 1,
-    title: 'Mountain Adventure',
-    description: 'Experience the thrill of mountain climbing with our expert guides.',
-    duration: '5 days',
-    price: '$1,299',
-    image: '/images/tours/mountain.jpg'
-  },
-  {
-    id: 2,
-    title: 'Beach Paradise',
-    description: 'Relax and unwind on the most beautiful beaches around the world.',
-    duration: '7 days',
-    price: '$1,499',
-    image: '/images/tours/beach.jpg'
-  },
-  {
-    id: 3,
-    title: 'City Explorer',
-    description: 'Discover the hidden gems of major cities with local guides.',
-    duration: '4 days',
-    price: '$899',
-    image: '/images/tours/city.jpg'
-  },
-  {
-    id: 4,
-    title: 'Cultural Journey',
-    description: 'Immerse yourself in different cultures and traditions.',
-    duration: '10 days',
-    price: '$2,199',
-    image: '/images/tours/cultural.jpg'
-  }
-];
+import { api } from "@/convex/_generated/api";
+import { useQuery } from "convex/react";
 
 export default function Tours() {
+  const tours = useQuery(api.tours.list);
+
+  if (!tours) {
+    return (
+      <main>
+        <Breadcrumb 
+          title="Our Tours" 
+          backgroundImage="/images/tours-bg.jpg"
+        />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main>
       <Breadcrumb 
@@ -57,21 +42,23 @@ export default function Tours() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {tours.map((tour) => (
-              <div key={tour.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="relative h-48">
-                  <Image
-                    src={tour.image}
-                    alt={tour.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <div key={tour._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                {tour.imageUrl && (
+                  <div className="relative h-48">
+                    <Image
+                      src={tour.imageUrl}
+                      alt={tour.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{tour.title}</h3>
+                  <h3 className="text-xl font-bold mb-2">{tour.name}</h3>
                   <p className="text-gray-600 mb-4">{tour.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-500">{tour.duration}</span>
-                    <span className="text-blue-600 font-bold">{tour.price}</span>
+                    <span className="text-blue-600 font-bold">${tour.price}</span>
                   </div>
                   <button className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
                     Book Now
