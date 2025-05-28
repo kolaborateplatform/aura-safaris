@@ -51,4 +51,11 @@ export const remove = mutation({
   handler: async (ctx, args) => {
     await ctx.db.delete(args.id);
   },
+});
+
+export const getDestinations = query({
+  handler: async (ctx) => {
+    const destinations = await ctx.db.query("destinations").collect();
+    return destinations;
+  },
 }); 
