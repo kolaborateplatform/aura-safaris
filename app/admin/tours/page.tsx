@@ -1,17 +1,29 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
 import AdminSidebar from '@/components/AdminSidebar';
+import { Id } from "../../../convex/_generated/dataModel";
 
 export default function ToursPage() {
   const tours = useQuery(api.tours.list);
   // Optionally, fetch destinations to display names instead of IDs
   const destinations = useQuery(api.destinations.list);
+  const deleteTour = useMutation(api.tours.remove);
 
   const getDestinationName = (id: string) => {
     return destinations?.find(dest => dest._id === id)?.name || "-";
+  };
+
+  const handleDelete = async (id: Id<"tours">) => {
+    if (window.confirm("Are you sure you want to delete this tour?")) {
+      try {
+        await deleteTour({ id });
+      } catch (error) {
+        console.error("Error deleting tour:", error);
+      }
+    }
   };
 
   return (
@@ -54,7 +66,12 @@ export default function ToursPage() {
                     <p className="text-gray-600 text-sm mb-2">Status: {tour.status}</p>
                     <div className="mt-auto flex justify-end space-x-2">
                       <Link href={`/admin/tours/edit/${tour._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
-                      {/* Add delete or other actions here if needed */}
+                      <button 
+                        onClick={() => handleDelete(tour._id)}
+                        className="text-red-600 hover:text-red-800 text-sm font-medium"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>

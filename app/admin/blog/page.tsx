@@ -1,12 +1,24 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
 import AdminSidebar from '@/components/AdminSidebar';
+import { Id } from "../../../convex/_generated/dataModel";
 
 export default function BlogPage() {
   const blogs = useQuery(api.blog.list);
+  const deleteBlog = useMutation(api.blog.remove);
+
+  const handleDelete = async (id: Id<"blogPosts">) => {
+    if (window.confirm("Are you sure you want to delete this blog post?")) {
+      try {
+        await deleteBlog({ id });
+      } catch (error) {
+        console.error("Error deleting blog post:", error);
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -44,7 +56,12 @@ export default function BlogPage() {
                     <p className="text-gray-600 text-sm mb-1">Status: {blog.status}</p>
                     <div className="mt-auto flex justify-end space-x-2">
                       <Link href={`/admin/blog/edit/${blog._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
-                      {/* Add delete or other actions here if needed */}
+                      <button 
+                        onClick={() => handleDelete(blog._id)}
+                        className="text-red-600 hover:text-red-800 text-sm font-medium"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>
