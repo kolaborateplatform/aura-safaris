@@ -30,7 +30,7 @@ export default function ContactUs() {
                   <FaPhone className="mx-auto text-4xl text-primary" />
                 </div>
                 <Link href="tel:+256774331380" className="text-blue-600 hover:underline text-lg font-semibold">
-                  +256-774-331-380
+                  +256-785-664-747
                 </Link>
               </div>
 
@@ -39,8 +39,8 @@ export default function ContactUs() {
                 <div className="mb-2">
                   <FaEnvelope className="mx-auto text-4xl text-primary" />
                 </div>
-                <Link href="mailto:info@hutlandtours.com" className="text-blue-600 hover:underline text-lg font-semibold">
-                  info@hutlandtours.com
+                <Link href="mailto:info@aurasafaritours.com" className="text-blue-600 hover:underline text-lg font-semibold">
+                  info@aurasafaritours.com
                 </Link>
               </div>
 
@@ -50,7 +50,7 @@ export default function ContactUs() {
                   <FaMapMarkerAlt className="mx-auto text-4xl text-primary" />
                 </div>
                 <p className="text-gray-700 text-lg font-semibold">
-                  Lugwana Kaggwa Close, <br /> Muyenga, Kampala, Uganda
+                  Mogas Petro Station Close, <br /> Banda, Kampala, Uganda
                 </p>
               </div>
             </div>

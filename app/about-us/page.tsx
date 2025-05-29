@@ -17,37 +17,32 @@ export default function AboutUs() {
             <p className="text-lg text-gray-600 font-secondary mb-2">Our Story</p>
             <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">A Lifelong Passion for East Africa</h2>
             <p className="text-gray-700 mb-6 font-secondary">
-              Hutland Travel is the realization of a lifelong passion for African travel, born
-              from the experiences of its founder, Martin Grey. Though raised in the Pacific
-              Northwest of the United States, Martin's early years were marked by
+              Aura Safaris is the realization of a lifelong passion for African travel, born
+              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
               extensive journeys across Asia, Africa, and Europe. Immersed in diverse
-              cultures and breathtaking landscapes, he developed a deep appreciation for
+              cultures and breathtaking landscapes, shee developed a deep appreciation for
               the transformative power of travel.
             </p>
             <p className="text-gray-700 mb-6 font-secondary">
-              It was in East Africa, however, that Martin found his heart's true home. The
-              vibrant cultures, stunning scenery, and incredible wildlife of Uganda, in
-              particular, captured his imagination and ignited a desire to share this passion
-              with others. He was particularly struck by the region's potential for tourism
-              to not only provide unforgettable experiences but also to contribute to
-              sustainable development.
+              Aura Safaris is the realization of a lifelong passion for African travel, born
+              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
+              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
+              cultures and breathtaking landscapes, shee developed a deep appreciation for
+              the transformative power of travel.
             </p>
             <p className="text-gray-700 mb-8 font-secondary">
-              Driven by this vision, Martin dedicated himself to creating a travel company
-              that would showcase the magic of East Africa while upholding the principles
-              of responsible tourism. He sought out and collaborated with like-minded
-              individuals – passionate local experts, conservationists, and community
-              leaders – to build a team committed to delivering authentic, enriching, and
-              sustainable travel experiences. Hutland Travel was thus founded on the belief
-              that tourism could be a force for good, fostering cultural exchange,
-              protecting natural heritage, and empowering local communities.
+              Aura Safaris is the realization of a lifelong passion for African travel, born
+              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
+              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
+              cultures and breathtaking landscapes, shee developed a deep appreciation for
+              the transformative power of travel.
             </p>
           </div>
 
           {/* Right Section: Images */}
-          <div className="lg:w-1/2 flex flex-col md:flex-row gap-8">
-            <div className="flex flex-col gap-8 w-full md:w-1/2">
-              <div className="relative w-full h-64 overflow-hidden">
+          <div className="lg:w-1/2 flex flex-col md:flex-row gap-8 justify-center items-center">
+            <div className="flex flex-col gap-8 w-full md:w-1/2 items-center">
+              <div className="relative overflow-hidden rounded-[30px]" style={{ width: '205px', height: '248px' }}>
                 <Image
                   src="/images/woman-with-binnocular.webp"
                   alt="woman with binnocular"
@@ -55,7 +50,7 @@ export default function AboutUs() {
                   className="object-cover object-center"
                 />
               </div>
-              <div className="relative w-full h-64 overflow-hidden">
+              <div className="relative overflow-hidden rounded-[30px]" style={{ width: '205px', height: '248px' }}>
                 <Image
                   src="/images/masai-dance.webp"
                   alt="Masai dance"
@@ -65,7 +60,7 @@ export default function AboutUs() {
               </div>
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center">
-              <div className="relative w-full h-64 overflow-hidden">
+              <div className="relative overflow-hidden rounded-[30px]" style={{ width: '205px', height: '248px' }}>
                 <Image
                   src="/images/tourist.webp"
                   alt="tourist"
@@ -98,7 +93,7 @@ export default function AboutUs() {
             <p className="text-lg text-gray-600 font-secondary mb-2">Product Philosophy</p>
             <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">Journeys that are more than just vacations</h2>
             <p className="text-gray-700 mb-6 font-secondary">
-              At Hutland Travel, our product philosophy is centered on crafting
+              At Aura Safaris, our product philosophy is centered on crafting
               journeys that are more than just vacations; they are transformative
               experiences that leave a positive and lasting impact.
             </p>
@@ -148,10 +143,10 @@ export default function AboutUs() {
         <div className="container mx-auto px-4 flex flex-col lg:flex-row-reverse items-center gap-12">
           {/* Right Section: Text Content */}
           <div className="lg:w-1/2">
-            <p className="text-lg text-gray-600 font-secondary mb-2">Why Hutland Travel</p>
+            <p className="text-lg text-gray-600 font-secondary mb-2">Why Aura Safaris</p>
             <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">Expertise and Personalized Service</h2>
             <p className="text-gray-700 mb-6 font-secondary">
-              Hutland Tours distinguishes itself through a deep-rooted passion for
+              Aura Safaris distinguishes itself through a deep-rooted passion for
               Uganda and East Africa, combined with a strong commitment to
               sustainable and responsible tourism. Based locally, our expertise
               provides authentic, off-the-beaten-path experiences alongside iconic
@@ -164,7 +159,7 @@ export default function AboutUs() {
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-3 font-secondary">
               <li>
-                <span className="font-semibold">Our Expertise:</span> Hutland Travel is more than a tour operator; we are a
+                <span className="font-semibold">Our Expertise:</span> Aura Safaris is more than a tour operator; we are a
                 team of passionate African travel specialists. With years of
                 experience and deep roots in East Africa, we possess an intimate
                 understanding of the region’s diverse landscapes, abundant wildlife,
@@ -189,7 +184,7 @@ export default function AboutUs() {
                 and immerse yourself in the journey.
               </li>
               <li>
-                <span className="font-semibold">Our Passion for Africa:</span> At the heart of Hutland Travel is a genuine
+                <span className="font-semibold">Our Passion for Africa:</span> At the heart of Aura Safaris is a genuine
                 love for Africa. We are driven by a desire to share the beauty, wonder,
                 and transformative power of this incredible continent with our
                 guests. We are committed to creating journeys that foster a deeper
