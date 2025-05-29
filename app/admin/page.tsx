@@ -10,12 +10,13 @@ export default async function AdminPage() {
     redirect('/sign-in');
   }
 
-  const isFirstUser = userId === 'user_2xdQBfkWqPKOIdsnk0nCX5ca2v9';
-  const isAdmin = sessionClaims?.role === 'admin' || isFirstUser;
+  // Temporarily bypass admin check for debugging
+  // const isFirstUser = userId === 'user_2xdQBfkWqPKOIdsnk0nCX5ca2v9';
+  // const isAdmin = sessionClaims?.role === 'admin' || isFirstUser;
 
-  if (!isAdmin) {
-    redirect('/');
-  }
+  // if (!isAdmin) {
+  //   redirect('/');
+  // }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -44,4 +45,4 @@ export default async function AdminPage() {
       </div>
     </div>
   );
-} 
+}
