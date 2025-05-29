@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-6 border-b border-gray-300">
           {/* Column 1: Logo and text */}
           <div>
-            <img src="/images/logo.png" alt="Aura Logo" className="h-10 mb-3" />
+            <img src="/images/aura-safaris.webp" alt="Aura Logo" className="h-10 mb-3" />
             <p className="text-sm text-gray-700 font-secondary">Explore the untamed beauty of Uganda, Kenya, Tanzania, and Rwanda with Aura Safaris.</p>
           </div>
           {/* Column 2 */}
