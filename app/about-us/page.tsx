@@ -45,30 +45,34 @@ export default function AboutUs() {
           </div>
 
           {/* Right Section: Images */}
-          <div className="lg:w-1/2 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="relative w-full h-64 overflow-hidden">
-              <Image
-                src="/images/lions.webp"
-                alt="Lions"
-                fill
-                className="object-cover object-center"
-              />
+          <div className="lg:w-1/2 flex flex-col md:flex-row gap-8">
+            <div className="flex flex-col gap-8 w-full md:w-1/2">
+              <div className="relative w-full h-64 overflow-hidden">
+                <Image
+                  src="/images/woman-with-binnocular.webp"
+                  alt="woman with binnocular"
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+              <div className="relative w-full h-64 overflow-hidden">
+                <Image
+                  src="/images/masai-dance.webp"
+                  alt="Masai dance"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
-            <div className="relative w-full h-64 overflow-hidden">
-              <Image
-                src="/images/about-woman-tent.webp"
-                alt="Woman relaxing in safari tent"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative w-full h-64 overflow-hidden">
-              <Image
-                src="/images/about-man-safari.webp"
-                alt="Man in safari attire"
-                fill
-                className="object-cover"
-              />
+            <div className="w-full md:w-1/2 flex items-center justify-center">
+              <div className="relative w-full h-64 overflow-hidden">
+                <Image
+                  src="/images/tourist.webp"
+                  alt="tourist"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
