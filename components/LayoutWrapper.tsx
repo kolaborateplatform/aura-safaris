@@ -15,7 +15,7 @@ export default function LayoutWrapper({
   return (
     <>
       {!isAuthPage && <Header />}
-      <main className="flex-grow">
+      <main className="flex-grow pt-0">
         {children}
       </main>
       {!isAuthPage && <Footer />}

@@ -1,18 +1,28 @@
 import { type Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Roboto } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-const geistSans = Geist({
-  subsets: ['latin'],
-  variable: '--font-geist-sans',
+const glimmerOfLight = localFont({
+  src: [
+    {
+      path: '../public/fonts/GlimmerOfLight.otf',
+      weight: '400',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-glimmer',
+  display: 'swap',
 })
 
-const geistMono = Geist_Mono({
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-roboto',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -28,7 +38,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        <body className={`${glimmerOfLight.variable} ${roboto.variable} antialiased min-h-screen flex flex-col`}>
           <ConvexClientProvider>
             <LayoutWrapper>
               {children}
