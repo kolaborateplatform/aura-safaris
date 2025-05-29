@@ -28,8 +28,8 @@ export default function Header() {
             <Link href="/blog" className="text-primary font-secondary hover:text-secondary transition-colors">
               Blog
             </Link>
-            <Link href="/accomodation" className="text-primary font-secondary hover:text-secondary transition-colors">
-              Accomodation
+            <Link href="/services" className="text-primary font-secondary hover:text-secondary transition-colors">
+              Services
             </Link>
             <Link href="/about-us" className="text-primary font-secondary hover:text-secondary transition-colors">
               About Us
@@ -42,4 +42,4 @@ export default function Header() {
       </div>
     </header>
   );
-} 
+}
