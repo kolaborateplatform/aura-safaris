@@ -4,10 +4,27 @@ import Image from "next/image";
 import TripSearchForm from "@/components/TripSearchForm";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
+import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
   const tours = useQuery(api.tours.list);
   const destinations = useQuery(api.destinations.list);
+
+  // Welcome section animation
+  const welcomeTextRef = useRef(null);
+  const [welcomeVisible, setWelcomeVisible] = useState(false);
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setWelcomeVisible(true);
+      },
+      { threshold: 0.2 }
+    );
+    if (welcomeTextRef.current) observer.observe(welcomeTextRef.current);
+    return () => {
+      if (welcomeTextRef.current) observer.unobserve(welcomeTextRef.current);
+    };
+  }, []);
 
   return (
     <>
@@ -25,6 +42,37 @@ export default function Home() {
           <button className="px-8 py-4 bg-secondary text-primary font-bold rounded shadow-lg hover:bg-primary hover:text-secondary transition text-lg mt-8">
             Get Started
           </button>
+        </div>
+      </section>
+
+      {/* WELCOME SECTION */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+          <div className="w-full md:w-3/5">
+            <div className="relative w-[875px] h-[775px] overflow-hidden">
+              <Image
+                src="/images/welcome.webp"
+                alt="Safari vehicle at sunset"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </div>
+          <div
+            ref={welcomeTextRef}
+            className={`w-full md:w-2/5 bg-white/90 p-8 shadow-lg relative z-10 transition-all duration-700 ease-out transform
+              ${welcomeVisible ? 'translate-x-0 opacity-100' : 'translate-x-24 opacity-0'}`}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-primary">Tailor-Made African Adventures: Your Journey, Our Expertise</h2>
+            <p className="text-lg text-accent font-semibold mb-2 font-secondary">Discover the wonders of Africa from wild savannahs to ancient forest heartlands.</p>
+            <p className="text-gray-700 mb-6 font-secondary">
+              Step into a world where every journey is crafted just for you. At Aura Safaris, we blend local expertise with a passion for adventure, ensuring your safari is as unique as you are. Whether you dream of sunrise game drives, cultural encounters, or tranquil escapes, our team is dedicated to making your African adventure unforgettable.
+            </p>
+            <button className="px-8 py-4 bg-primary text-white font-bold rounded shadow-lg hover:bg-secondary hover:text-primary transition text-lg">
+              Start Your Journey
+            </button>
+          </div>
         </div>
       </section>
 
