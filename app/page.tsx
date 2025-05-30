@@ -54,7 +54,7 @@ export default function Home() {
             <div className="relative w-[594px] h-[708px] overflow-hidden">
               <Image
                 src="/images/about-aura.webp"
-                alt="Woman relaxing in a safari tent"
+                alt="tourists"
                 fill
                 className="object-cover"
               />
