@@ -35,14 +35,14 @@ export default function Home() {
             <p className="text-lg text-gray-600 font-secondary mb-2">Our Story</p>
             <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">Crafting Unforgettable Experiences</h2>
             <p className="text-gray-700 mb-6 font-secondary">
-              Hutland Travel is the culmination of Martin Grey's lifelong pursuit of discovery. From the misty forests of the Pacific
+              Aura Safaris is the culmination of Martin Grey's lifelong pursuit of discovery. From the misty forests of the Pacific
               Northwest to sprawling deserts in Asia and historic cities in Europe, Martin's childhood rucksack carried a single mission: to
               understand the world and its people. Yet it was in East Africa—where Uganda's kaleidoscope of cultures, lush hills, and
               teeming wildlife forged an unbreakable bond—that he found his true calling.
             </p>
             <p className="text-gray-700 mb-8 font-secondary">
               Fueled by the conviction that travel can be a catalyst for positive change, Martin teamed up with local guides,
-              dedicated conservationists, and community leaders to create Hutland Travel. Our itineraries blend off-the-beaten-path
+              dedicated conservationists, and community leaders to create Aura Safaris. Our itineraries blend off-the-beaten-path
               adventures with authentic cultural exchanges, all designed to uplift local economies, protect fragile ecosystems, and leave a
               meaningful legacy. Ready to embark on a journey that transforms both traveler and destination?
             </p>
@@ -51,9 +51,9 @@ export default function Home() {
             </button>
           </div>
           <div className="lg:w-1/2">
-            <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-xl">
+            <div className="relative w-[594px] h-[708px] overflow-hidden">
               <Image
-                src="/images/about.webp"
+                src="/images/about-aura.webp"
                 alt="Woman relaxing in a safari tent"
                 fill
                 className="object-cover"
@@ -78,8 +78,8 @@ export default function Home() {
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {destinations.map((destination) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {destinations.slice(0, 4).map((destination) => (
                 <div 
                   key={destination._id} 
                   className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
