@@ -5,7 +5,7 @@ import { OurFileRouter } from "@/utils/uploadthing";
 import { useState } from "react";
 
 interface UploadButtonProps {
-  onUploadComplete?: (url: string) => void;
+  onUploadComplete?: (url: string | string[]) => void;
   onUploadError?: (error: Error) => void;
 }
 
@@ -20,8 +20,13 @@ export default function CustomUploadButton({ onUploadComplete, onUploadError }: 
       }}
       onClientUploadComplete={(res) => {
         setIsUploading(false);
-        if (res && res[0] && res[0].url) {
-          onUploadComplete?.(res[0].url);
+        if (res && res.length > 0) {
+          const urls = res.map(r => r.url).filter(Boolean);
+          if (urls.length > 1) {
+            onUploadComplete?.(urls);
+          } else {
+            onUploadComplete?.(urls[0]);
+          }
         }
       }}
       onUploadError={(error: Error) => {
@@ -44,7 +49,7 @@ export default function CustomUploadButton({ onUploadComplete, onUploadError }: 
         },
       }}
       content={{
-        button: isUploading ? "Uploading..." : "Upload Image",
+        button: isUploading ? "Uploading..." : "Upload Image(s)",
       }}
     />
   );

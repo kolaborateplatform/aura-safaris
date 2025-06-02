@@ -43,10 +43,10 @@ export default function Tours() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {tours.map((tour) => (
               <div key={tour._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                {tour.imageUrl && (
+                {tour.featuredImage && (
                   <div className="relative h-48">
                     <Image
-                      src={tour.imageUrl}
+                      src={tour.featuredImage}
                       alt={tour.name}
                       fill
                       className="object-cover"
@@ -57,8 +57,8 @@ export default function Tours() {
                   <h3 className="text-xl font-bold mb-2">{tour.name}</h3>
                   <p className="text-gray-600 mb-4">{tour.description}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-500">{tour.duration}</span>
-                    <span className="text-blue-600 font-bold">${tour.price}</span>
+                    <span className="text-gray-500">{tour.durationDays}</span>
+                    <span className="text-blue-600 font-bold">${tour.regularPrice}</span>
                   </div>
                   <button className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
                     Book Now

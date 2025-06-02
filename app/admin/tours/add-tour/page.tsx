@@ -83,8 +83,12 @@ export default function AddTourPage() {
     setFormData(prev => ({ ...prev, galleryImages: [...prev.galleryImages, url] }));
   };
 
-  const handleFeaturedImageUpload = (url: string) => {
-    setFormData(prev => ({ ...prev, featuredImage: url }));
+  const handleFeaturedImageUpload = (url: string | string[]) => {
+    if (Array.isArray(url)) {
+      setFormData(prev => ({ ...prev, featuredImage: url[0] || "" }));
+    } else {
+      setFormData(prev => ({ ...prev, featuredImage: url }));
+    }
   };
 
   return (
@@ -127,7 +131,13 @@ export default function AddTourPage() {
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Tour Gallery Images</label>
                   <CustomUploadButton
-                    onUploadComplete={handleImageUpload}
+                    onUploadComplete={urls => {
+                      if (Array.isArray(urls)) {
+                        setFormData(prev => ({ ...prev, galleryImages: [...prev.galleryImages, ...urls] }));
+                      } else if (urls) {
+                        setFormData(prev => ({ ...prev, galleryImages: [...prev.galleryImages, urls] }));
+                      }
+                    }}
                     onUploadError={error => console.error("Upload error:", error)}
                   />
                   {formData.galleryImages.length > 0 && (
@@ -254,28 +264,7 @@ export default function AddTourPage() {
                   </div>
                 )}
 
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Amount of insurance ($)</label>
-                  <input
-                    type="number"
-                    value={formData.amountOfInsurance}
-                    onChange={e => setFormData(prev => ({ ...prev, amountOfInsurance: Number(e.target.value) }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Enable deposit</label>
-                    <select
-                      value={formData.enableDeposit}
-                      onChange={e => setFormData(prev => ({ ...prev, enableDeposit: e.target.value }))}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="No">No</option>
-                      <option value="Yes">Yes</option>
-                    </select>
-                  </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Full Payment</label>
                     <select
@@ -396,7 +385,7 @@ export default function AddTourPage() {
                   {fixedTimes.map((time, index) => (
                     <div key={index} className="flex items-center space-x-2 mb-2">
                       <input
-                        type="text"
+                        type="date"
                         value={time.checkIn}
                         onChange={e => {
                           const newTimes = [...fixedTimes];
@@ -407,7 +396,7 @@ export default function AddTourPage() {
                         placeholder="Check in *"
                       />
                       <input
-                        type="text"
+                        type="date"
                         value={time.checkOut}
                         onChange={e => {
                           const newTimes = [...fixedTimes];
@@ -488,73 +477,6 @@ export default function AddTourPage() {
                     className="px-3 py-1 text-sm text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50"
                   >
                     Add Feature
-                  </button>
-                </div>
-
-                {/* Global Discount */}
-                <div className="mb-4 p-3 border rounded-md bg-gray-50">
-                  <h3 className="text-md font-semibold text-gray-800 mb-2">Global Discount (GD) / Price Per Person</h3>
-                  {globalDiscounts.map((discount, index) => (
-                    <div key={index} className="grid grid-cols-5 gap-2 items-center mb-2">
-                      <input
-                        type="number"
-                        value={discount.adultPrice}
-                        onChange={e => {
-                          const newDiscounts = [...globalDiscounts];
-                          newDiscounts[index].adultPrice = Number(e.target.value);
-                          setGlobalDiscounts(newDiscounts);
-                        }}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Adult Price *"
-                      />
-                      <input
-                        type="number"
-                        value={discount.childrenPrice}
-                        onChange={e => {
-                          const newDiscounts = [...globalDiscounts];
-                          newDiscounts[index].childrenPrice = Number(e.target.value);
-                          setGlobalDiscounts(newDiscounts);
-                        }}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Children Price *"
-                      />
-                      <input
-                        type="number"
-                        value={discount.babyPrice}
-                        onChange={e => {
-                          const newDiscounts = [...globalDiscounts];
-                          newDiscounts[index].babyPrice = Number(e.target.value);
-                          setGlobalDiscounts(newDiscounts);
-                        }}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Baby Price *"
-                      />
-                      <input
-                        type="number"
-                        value={discount.minMaxNumber}
-                        onChange={e => {
-                          const newDiscounts = [...globalDiscounts];
-                          newDiscounts[index].minMaxNumber = Number(e.target.value);
-                          setGlobalDiscounts(newDiscounts);
-                        }}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Min - Max Number *"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setGlobalDiscounts(globalDiscounts.filter((_, i) => i !== index))}
-                        className="text-red-500 hover:text-red-700"
-                      >
-                        X
-                      </button>
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => setGlobalDiscounts([...globalDiscounts, { adultPrice: 0, childrenPrice: 0, babyPrice: 0, minMaxNumber: 0 }])}
-                    className="px-3 py-1 text-sm text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50"
-                  >
-                    Add GD
                   </button>
                 </div>
               </div>

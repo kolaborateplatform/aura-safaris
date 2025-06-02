@@ -156,52 +156,6 @@ export default function Home() {
           )}
         </div>
       </section>
-
-      {/* FEATURED TOURS SECTION */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-primary font-primary">Featured Tours</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-secondary">
-              Explore our most popular safari packages, designed to give you the ultimate African experience
-            </p>
-          </div>
-
-          {!tours ? (
-            <div className="flex justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {tours.map((tour) => (
-                <div key={tour._id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  {tour.imageUrl && (
-                    <div className="relative h-48">
-                      <Image
-                        src={tour.imageUrl}
-                        alt={tour.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 text-primary font-primary">{tour.name}</h3>
-                    <p className="text-gray-600 mb-4 font-secondary">{tour.description}</p>
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-gray-500 font-secondary">{tour.duration}</span>
-                      <span className="text-secondary font-bold">${tour.price}</span>
-                    </div>
-                    <button className="w-full bg-secondary text-primary font-bold py-2 px-4 rounded hover:bg-primary hover:text-secondary transition-colors">
-                      Book Now
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
     </>
   );
 }

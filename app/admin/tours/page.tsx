@@ -47,9 +47,9 @@ export default function ToursPage() {
             {tours && tours.length > 0 ? (
               tours.map(tour => (
                 <div key={tour._id} className="bg-white rounded-lg shadow overflow-hidden flex flex-col">
-                  {tour.imageUrl ? (
+                  {tour.featuredImage ? (
                     <img
-                      src={tour.imageUrl}
+                      src={tour.featuredImage}
                       alt={tour.name}
                       className="w-full h-48 object-cover"
                     />
@@ -61,8 +61,8 @@ export default function ToursPage() {
                   <div className="p-4 flex-1 flex flex-col">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">{tour.name}</h3>
                     <p className="text-gray-600 text-sm mb-1">Destination: <span className="font-medium">{getDestinationName(tour.destinationId)}</span></p>
-                    <p className="text-gray-600 text-sm mb-1">Duration: {tour.duration}</p>
-                    <p className="text-gray-600 text-sm mb-1">Price: <span className="font-medium">${tour.price}</span></p>
+                    <p className="text-gray-600 text-sm mb-1">Duration: {tour.durationDays}</p>
+                    <p className="text-gray-600 text-sm mb-1">Price: <span className="font-medium">${tour.regularPrice}</span></p>
                     <p className="text-gray-600 text-sm mb-2">Status: {tour.status}</p>
                     <div className="mt-auto flex justify-end space-x-2">
                       <Link href={`/admin/tours/edit/${tour._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
