@@ -18,10 +18,10 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    price: 0,
-    duration: "",
+    regularPrice: 0,
+    durationDays: 0,
     destinationId: "",
-    imageUrl: "",
+    featuredImage: "",
     status: "draft",
   });
 
@@ -30,10 +30,10 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
       setFormData({
         name: tour.name,
         description: tour.description,
-        price: tour.price,
-        duration: tour.duration,
+        regularPrice: tour.regularPrice,
+        durationDays: tour.durationDays,
         destinationId: tour.destinationId,
-        imageUrl: tour.imageUrl || "",
+        featuredImage: tour.featuredImage || "",
         status: tour.status,
       });
     }
@@ -46,7 +46,6 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
       await updateTour({
         id: resolvedParams.id as Id<"tours">,
         ...formData,
-        price: Number(formData.price),
         destinationId: formData.destinationId as Id<"destinations">,
       });
       router.push("/admin/tours");
@@ -57,8 +56,9 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
     }
   };
 
-  const handleImageUpload = (url: string) => {
-    setFormData(prev => ({ ...prev, imageUrl: url }));
+ const handleImageUpload = (url: string | string[]) => {
+    const featuredImage = Array.isArray(url) ? url[0] : url;
+    setFormData(prev => ({ ...prev, featuredImage: featuredImage }));
   };
 
   if (!tour) {
@@ -111,9 +111,9 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Duration (days)</label>
                 <input
-                  type="text"
-                  value={formData.duration}
-                  onChange={e => setFormData(prev => ({ ...prev, duration: e.target.value }))}
+                  type="number"
+                  value={formData.durationDays}
+                  onChange={e => setFormData(prev => ({ ...prev, durationDays: Number(e.target.value) }))}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
@@ -122,8 +122,8 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
                 <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
                 <input
                   type="number"
-                  value={formData.price}
-                  onChange={e => setFormData(prev => ({ ...prev, price: Number(e.target.value) }))}
+                  value={formData.regularPrice}
+                  onChange={e => setFormData(prev => ({ ...prev, regularPrice: Number(e.target.value) }))}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
@@ -155,10 +155,10 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
                   onUploadComplete={handleImageUpload}
                   onUploadError={error => console.error("Upload error:", error)}
                 />
-                {formData.imageUrl && (
+                {formData.featuredImage && (
                   <div className="mt-2">
                     <img
-                      src={formData.imageUrl}
+                      src={formData.featuredImage}
                       alt="Preview"
                       className="w-32 h-32 object-cover rounded"
                     />
@@ -187,4 +187,4 @@ export default function EditTourPage({ params }: { params: Promise<{ id: string 
       </div>
     </div>
   );
-} 
+}

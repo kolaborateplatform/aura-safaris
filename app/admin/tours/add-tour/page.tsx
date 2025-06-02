@@ -62,10 +62,11 @@ export default function AddTourPage() {
       await createTour({
         name: formData.name,
         description: formData.description,
-        price: formData.regularPrice, // Using regularPrice as the main price for now
-        duration: formData.durationDays.toString(), // Using durationDays as duration for now
+        regularPrice: formData.regularPrice, // Using regularPrice as the main price for now
+        durationDays: formData.durationDays, // Using durationDays as duration for now
         destinationId: formData.destinationId as Id<"destinations">,
-        imageUrl: formData.galleryImages[0] || "", // Pass the first image from galleryImages, or an empty string if no images
+        featuredImage: formData.featuredImage,
+        galleryImages: formData.galleryImages,
         status: formData.status,
         // The new fields (e.g., durationToggle, fixedTimes, etc.) are not yet
         // supported by the Convex schema and mutation. They need to be added

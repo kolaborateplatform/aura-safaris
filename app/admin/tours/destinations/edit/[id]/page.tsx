@@ -46,8 +46,9 @@ export default function EditDestinationPage({ params }: { params: Promise<{ id: 
     }
   };
 
-  const handleImageUpload = (url: string) => {
-    setFormData(prev => ({ ...prev, imageUrl: url }));
+ const handleImageUpload = (url: string | string[]) => {
+    const imageUrl = Array.isArray(url) ? url[0] : url;
+    setFormData(prev => ({ ...prev, imageUrl: imageUrl }));
   };
 
   if (!destination) {
@@ -129,4 +130,4 @@ export default function EditDestinationPage({ params }: { params: Promise<{ id: 
       </div>
     </div>
   );
-} 
+}
