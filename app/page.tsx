@@ -156,6 +156,55 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* TOURS SECTION */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-primary font-primary">Featured Tours</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-secondary">
+              Explore Our Top Safari Tours
+            </p>
+          </div>
+
+          {!tours ? (
+            <div className="flex justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {tours.slice(0, 4).map((tour) => (
+                <div 
+                  key={tour._id} 
+                  className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  {tour.featuredImage && (
+                    <div className="relative h-64">
+                      <Image
+                        src={tour.featuredImage}
+                        alt={tour.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    </div>
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2 font-primary">{tour.name}</h3>
+                    <p className="text-sm font-secondary line-clamp-2">{tour.description}</p>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-lg font-bold text-secondary">${tour.regularPrice}</span>
+                      <button className="bg-secondary text-primary font-bold py-2 px-6 rounded hover:bg-primary hover:text-secondary transition-colors">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </>
   );
 }
