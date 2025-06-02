@@ -35,8 +35,12 @@ export default function AddBlogPage() {
     }
   };
 
-  const handleImageUpload = (url: string) => {
-    setFormData(prev => ({ ...prev, imageUrl: url }));
+  const handleImageUpload = (url: string | string[]) => {
+    if (Array.isArray(url)) {
+      setFormData(prev => ({ ...prev, imageUrl: url[0] || "" }));
+    } else {
+      setFormData(prev => ({ ...prev, imageUrl: url }));
+    }
   };
 
   return (
