@@ -33,8 +33,9 @@ export default function AddDestinationPage() {
     }
   };
 
-  const handleImageUpload = (url: string) => {
-    setFormData(prev => ({ ...prev, imageUrl: url }));
+  const handleImageUpload = (url: string | string[]) => {
+    const imageUrl = Array.isArray(url) ? url[0] : url;
+    setFormData(prev => ({ ...prev, imageUrl: imageUrl }));
   };
 
   return (
@@ -117,4 +118,4 @@ export default function AddDestinationPage() {
       </div>
     </div>
   );
-} 
+}
