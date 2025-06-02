@@ -5,8 +5,7 @@ export default function Services() {
   return (
     <main>
       <Breadcrumb 
-        title="Our Services" 
-        backgroundImage="/images/services-bg.jpg" // Assuming a background image for services page
+        title="Our Services"
       />
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">

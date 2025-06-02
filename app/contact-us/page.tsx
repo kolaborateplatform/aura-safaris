@@ -9,8 +9,7 @@ export default function ContactUs() {
   return (
     <main className="bg-gray-100 min-h-screen">
       <Breadcrumb 
-        title="Contact Us" 
-        backgroundImage="/images/contact-bg.jpg"
+        title="Contact Us"
       />
       <section className="py-16">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-12 items-start">

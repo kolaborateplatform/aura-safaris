@@ -6,8 +6,7 @@ export default function AboutUs() {
   return (
     <main>
       <Breadcrumb 
-        title="About Us" 
-        backgroundImage="/images/about-bg.jpg"
+        title="About Us"
       />
       
       <section className="py-16 bg-white">
@@ -154,7 +153,7 @@ export default function AboutUs() {
               itineraries that cater to individual needs, ensuring each journey is unique
               and unforgettable. Furthermore, our dedication to supporting local
               communities and minimizing our environmental impact means that when
-              you travel with Hutland Tours, you’re not just exploring, you’re
+              you travel with Hutland Tours, you're not just exploring, you're
               contributing to a positive future for this remarkable region.
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-3 font-secondary">
@@ -162,7 +161,7 @@ export default function AboutUs() {
                 <span className="font-semibold">Our Expertise:</span> Aura Safaris is more than a tour operator; we are a
                 team of passionate African travel specialists. With years of
                 experience and deep roots in East Africa, we possess an intimate
-                understanding of the region’s diverse landscapes, abundant wildlife,
+                understanding of the region's diverse landscapes, abundant wildlife,
                 and vibrant cultures. Our local knowledge allows us to craft unique
                 and authentic experiences that go beyond the typical tourist trail.
               </li>
@@ -177,7 +176,7 @@ export default function AboutUs() {
               </li>
               <li>
                 <span className="font-semibold">Our Personalized Approach:</span> We understand that every traveler is
-                unique. That’s why we take the time to listen to your individual needs,
+                unique. That's why we take the time to listen to your individual needs,
                 interests, and preferences. Our travel designers work closely with you
                 to create a tailor-made itinerary that perfectly matches your vision
                 of an African adventure. We handle all the details, so you can relax

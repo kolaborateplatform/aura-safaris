@@ -18,14 +18,14 @@ export default function Breadcrumb({ title, items, backgroundImageUrl }: Breadcr
   ];
 
   const breadcrumbItems = items || defaultItems;
-  const bgUrl = backgroundImageUrl || 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'; // Placeholder
+  const bgUrl = backgroundImageUrl || '/images/breadcrumb.jpg'; // Use local image as default
 
   return (
     <section
       className="w-full bg-cover bg-center relative flex items-center justify-center"
       style={{ backgroundImage: `url(${bgUrl})`, minHeight: '300px' }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-80"></div>
+      <div className="absolute inset-0 bg-opacity-30"></div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full w-full text-center">
         <h1 className="text-5xl font-extrabold text-purple-800 mb-4 drop-shadow-lg">
           {title}

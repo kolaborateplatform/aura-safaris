@@ -14,7 +14,7 @@ export default function Tours() {
       <main>
         <Breadcrumb 
           title="Our Tours" 
-          backgroundImage="/images/tours-bg.jpg"
+          backgroundImageUrl="/images/tours-bg.jpg"
         />
         <div className="min-h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
@@ -26,8 +26,7 @@ export default function Tours() {
   return (
     <main>
       <Breadcrumb 
-        title="Our Tours" 
-        backgroundImage="/images/tours-bg.jpg"
+        title="Our Tours"
       />
       
       <section className="py-16">
