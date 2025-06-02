@@ -50,8 +50,12 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
     }
   };
 
-  const handleImageUpload = (url: string) => {
-    setFormData(prev => ({ ...prev, imageUrl: url }));
+  const handleImageUpload = (url: string | string[]) => {
+    if (Array.isArray(url)) {
+      setFormData(prev => ({ ...prev, imageUrl: url[0] || "" }));
+    } else {
+      setFormData(prev => ({ ...prev, imageUrl: url }));
+    }
   };
 
   if (!blog) {
