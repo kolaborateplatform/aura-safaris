@@ -62,7 +62,7 @@ export default function Home() {
           <div
             ref={welcomeTextRef}
             className={`w-full md:w-2/5 bg-white/90 p-8 shadow-lg relative z-10 transition-all duration-700 ease-out transform
-              ${welcomeVisible ? 'translate-x-0 opacity-100' : 'translate-x-24 opacity-0'}`}
+              ${welcomeVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-primary">Tailor-Made African Adventures: Your Journey, Our Expertise</h2>
             <p className="text-lg text-accent font-semibold mb-2 font-secondary">Discover the wonders of Africa from wild savannahs to ancient forest heartlands.</p>
