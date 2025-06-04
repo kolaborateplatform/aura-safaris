@@ -58,7 +58,7 @@ export default function DestinationsPage() {
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{destination.name}</h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3">{destination.description}</p>
-                  <div className="flex justify-end space-x-2">
+                  <div className="flex justify-end items-center space-x-2">
                     <Link 
                       href={`/admin/tours/destinations/edit/${destination._id}`}
                       className="text-blue-600 hover:text-blue-800 text-sm font-medium"

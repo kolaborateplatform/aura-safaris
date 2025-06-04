@@ -54,7 +54,7 @@ export default function BlogPage() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">{blog.title}</h3>
                     <p className="text-gray-600 text-sm mb-1">Author: <span className="font-medium">{blog.author}</span></p>
                     <p className="text-gray-600 text-sm mb-1">Status: {blog.status}</p>
-                    <div className="mt-auto flex justify-end space-x-2">
+                    <div className="mt-auto flex justify-end items-center space-x-2">
                       <Link href={`/admin/blog/edit/${blog._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
                       <button 
                         onClick={() => handleDelete(blog._id)}

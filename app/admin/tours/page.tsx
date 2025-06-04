@@ -5,6 +5,7 @@ import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
 import AdminSidebar from '@/components/AdminSidebar';
 import { Id } from "../../../convex/_generated/dataModel";
+import { FaEye } from "react-icons/fa";
 
 export default function ToursPage() {
   const tours = useQuery(api.tours.list);
@@ -64,7 +65,7 @@ export default function ToursPage() {
                     <p className="text-gray-600 text-sm mb-1">Duration: {tour.durationDays}</p>
                     <p className="text-gray-600 text-sm mb-1">Price: <span className="font-medium">${tour.regularPrice}</span></p>
                     <p className="text-gray-600 text-sm mb-2">Status: {tour.status}</p>
-                    <div className="mt-auto flex justify-end space-x-2">
+                    <div className="mt-auto flex justify-end items-center space-x-2">
                       <Link href={`/admin/tours/edit/${tour._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
                       <button 
                         onClick={() => handleDelete(tour._id)}
