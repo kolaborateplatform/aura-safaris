@@ -9,7 +9,6 @@ import { FaEye } from "react-icons/fa";
 
 export default function ToursPage() {
   const tours = useQuery(api.tours.list);
-  // Optionally, fetch destinations to display names instead of IDs
   const destinations = useQuery(api.destinations.list);
   const deleteTour = useMutation(api.tours.remove);
 
@@ -25,6 +24,10 @@ export default function ToursPage() {
         console.error("Error deleting tour:", error);
       }
     }
+  };
+
+  const generateSlug = (name: string) => {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
   return (
@@ -66,6 +69,15 @@ export default function ToursPage() {
                     <p className="text-gray-600 text-sm mb-1">Price: <span className="font-medium">${tour.regularPrice}</span></p>
                     <p className="text-gray-600 text-sm mb-2">Status: {tour.status}</p>
                     <div className="mt-auto flex justify-end items-center space-x-2">
+                      <Link 
+                        href={`/tours/${generateSlug(tour.name)}`}
+                        className="text-gray-600 hover:text-gray-800 text-sm font-medium"
+                        title="View Details"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaEye className="w-4 h-4" />
+                      </Link>
                       <Link href={`/admin/tours/edit/${tour._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
                       <button 
                         onClick={() => handleDelete(tour._id)}

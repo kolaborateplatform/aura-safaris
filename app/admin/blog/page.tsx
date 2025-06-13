@@ -5,6 +5,7 @@ import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
 import AdminSidebar from '@/components/AdminSidebar';
 import { Id } from "../../../convex/_generated/dataModel";
+import { FaEye } from "react-icons/fa";
 
 export default function BlogPage() {
   const blogs = useQuery(api.blog.list);
@@ -18,6 +19,10 @@ export default function BlogPage() {
         console.error("Error deleting blog post:", error);
       }
     }
+  };
+
+  const generateSlug = (title: string) => {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
   return (
@@ -55,6 +60,15 @@ export default function BlogPage() {
                     <p className="text-gray-600 text-sm mb-1">Author: <span className="font-medium">{blog.author}</span></p>
                     <p className="text-gray-600 text-sm mb-1">Status: {blog.status}</p>
                     <div className="mt-auto flex justify-end items-center space-x-2">
+                      <Link 
+                        href={`/blog/${generateSlug(blog.title)}`}
+                        className="text-gray-600 hover:text-gray-800 text-sm font-medium"
+                        title="View Details"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaEye className="w-4 h-4" />
+                      </Link>
                       <Link href={`/admin/blog/edit/${blog._id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">Edit</Link>
                       <button 
                         onClick={() => handleDelete(blog._id)}

@@ -6,6 +6,7 @@ import AdminSidebar from "@/components/AdminSidebar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Id } from "../../../../convex/_generated/dataModel";
+import { FaEye } from "react-icons/fa";
 
 export default function DestinationsPage() {
   const router = useRouter();
@@ -20,6 +21,10 @@ export default function DestinationsPage() {
         console.error("Error deleting destination:", error);
       }
     }
+  };
+
+  const generateSlug = (name: string) => {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
   return (
@@ -59,6 +64,15 @@ export default function DestinationsPage() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{destination.name}</h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3">{destination.description}</p>
                   <div className="flex justify-end items-center space-x-2">
+                    <Link 
+                      href={`/destinations/${generateSlug(destination.name)}`}
+                      className="text-gray-600 hover:text-gray-800 text-sm font-medium"
+                      title="View Details"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaEye className="w-4 h-4" />
+                    </Link>
                     <Link 
                       href={`/admin/tours/destinations/edit/${destination._id}`}
                       className="text-blue-600 hover:text-blue-800 text-sm font-medium"
