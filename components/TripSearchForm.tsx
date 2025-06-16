@@ -2,11 +2,21 @@
 
 import { useState } from "react";
 import { FaUser, FaCalendarAlt } from "react-icons/fa";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function TripSearchForm() {
   const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [travelers, setTravelers] = useState(1);
+  const [showDestinations, setShowDestinations] = useState(false);
+  
+  const destinations = useQuery(api.destinations.list);
+
+  // Filter destinations based on search input
+  const filteredDestinations = destinations?.filter(dest => 
+    dest.name.toLowerCase().includes(destination.toLowerCase())
+  ) || [];
 
   return (
     <form
@@ -17,15 +27,39 @@ export default function TripSearchForm() {
       }}
     >
       {/* Destination */}
-      <div className="flex-1 flex flex-col md:mr-6">
+      <div className="flex-1 flex flex-col md:mr-6 relative">
         <label className="text-yellow-400 font-semibold mb-1">Destination</label>
         <input
           type="text"
           placeholder="Where to?"
           className="bg-transparent border-b border-gray-400 text-white placeholder-gray-400 focus:outline-none py-1"
           value={destination}
-          onChange={e => setDestination(e.target.value)}
+          onChange={e => {
+            setDestination(e.target.value);
+            setShowDestinations(true);
+          }}
+          onFocus={() => setShowDestinations(true)}
         />
+        
+        {/* Destination Dropdown */}
+        {showDestinations && destination && filteredDestinations.length > 0 && (
+          <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
+            {filteredDestinations.map((dest) => (
+              <button
+                key={dest._id}
+                type="button"
+                className="w-full text-left px-4 py-2 hover:bg-gray-100 focus:outline-none"
+                onClick={() => {
+                  setDestination(dest.name);
+                  setShowDestinations(false);
+                }}
+              >
+                <div className="font-medium text-gray-900">{dest.name}</div>
+                <div className="text-sm text-gray-600 truncate">{dest.description}</div>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Check In */}

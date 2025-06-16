@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Glimmer of Light';
+  src: url('/fonts/glimmer-of-light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Base colors */
   --background: #ffffff;
@@ -9,10 +25,10 @@
   --primary-color: #5B2C6F;
   --secondary-color: #E19629;
   --accent-color: #8BC34A;
-  
+
   /* Font variables */
-  --font-primary: var(--font-glimmer);
-  --font-secondary: var(--font-roboto);
+  --font-primary: 'Glimmer of Light', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
