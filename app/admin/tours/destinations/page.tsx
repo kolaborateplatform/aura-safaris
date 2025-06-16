@@ -74,7 +74,7 @@ export default function DestinationsPage() {
                       <FaEye className="w-4 h-4" />
                     </Link>
                     <Link 
-                      href={`/admin/tours/destinations/edit/${destination._id}`}
+                      href={`/admin/tours/destinations/edit/${destination.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`}
                       className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                     >
                       Edit

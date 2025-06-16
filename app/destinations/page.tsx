@@ -9,6 +9,10 @@ import Breadcrumb from "@/components/Breadcrumb";
 export default function DestinationsPage() {
   const destinations = useQuery(api.destinations.getDestinations);
 
+  const generateSlug = (name: string) => {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  };
+
   if (!destinations) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -44,7 +48,7 @@ export default function DestinationsPage() {
                 <h2 className="text-2xl font-semibold mb-2">{destination.name}</h2>
                 <p className="text-gray-600 mb-4">{destination.description}</p>
                 <Link
-                  href={`/destinations/${destination._id}`}
+                  href={`/destinations/${generateSlug(destination.name)}`}
                   className="inline-block bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90 transition-colors duration-300"
                 >
                   Explore Tours
