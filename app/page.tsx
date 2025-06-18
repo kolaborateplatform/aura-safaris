@@ -31,7 +31,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section
         aria-label="Hero Section"
-        className="relative flex items-center justify-center min-h-screen w-full bg-cover bg-center"
+        className="relative flex items-center justify-center min-h-screen w-full bg-cover bg-center pt-16 md:pt-0"
         style={{ backgroundImage: "url('/images/hero.webp')" }}
       >
         <div className="absolute inset-0 bg-black/40" />
