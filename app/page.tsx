@@ -39,7 +39,7 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 drop-shadow-lg text-primary">Let's Explore</h1>
           <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 drop-shadow-lg font-secondary">Would you like to discover East Africa?</p>
           <TripSearchForm />
-          <button className="px-6 md:px-8 py-3 md:py-4 bg-secondary text-primary font-bold rounded shadow-lg hover:bg-primary hover:text-secondary transition text-base md:text-lg mt-6 md:mt-8">
+          <button className="px-6 md:px-8 py-3 md:py-4 bg-secondary text-primary font-bold rounded shadow-lg hover:bg-primary hover:text-secondary transition text-base md:text-lg mt-6 md:mt-8 drop-shadow-lg">
             Get Started
           </button>
         </div>
@@ -69,7 +69,7 @@ export default function Home() {
             <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 font-secondary">
               Step into a world where every journey is crafted just for you. At Aura Safaris, we blend local expertise with a passion for adventure, ensuring your safari is as unique as you are. Whether you dream of sunrise game drives, cultural encounters, or tranquil escapes, our team is dedicated to making your African adventure unforgettable.
             </p>
-            <button className="px-6 md:px-8 py-3 md:py-4 bg-primary text-white font-bold rounded shadow-lg hover:bg-secondary hover:text-primary transition text-base md:text-lg">
+            <button className="px-6 md:px-8 py-3 md:py-4 bg-primary text-secondary font-bold rounded shadow-lg hover:bg-secondary hover:text-primary transition text-base md:text-lg">
               Start Your Journey
             </button>
           </div>
@@ -79,7 +79,20 @@ export default function Home() {
       {/* ABOUT SECTION */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
-          <div className="lg:w-1/2">
+          {/* Image div - moved to top for mobile */}
+          <div className="w-full lg:w-1/2 order-1 lg:order-2">
+            <div className="relative w-full aspect-[4/3] md:aspect-[4/5] lg:aspect-[4/6]">
+              <Image
+                src="/images/about-aura.webp"
+                alt="tourists"
+                fill
+                className="object-cover rounded-lg"
+                priority
+              />
+            </div>
+          </div>
+          {/* Text content - will show after image on mobile */}
+          <div className="w-full lg:w-1/2 order-2 lg:order-1">
             <p className="text-base md:text-lg text-gray-600 font-secondary mb-2">Our Story</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-primary font-primary leading-tight">Crafting Unforgettable Experiences</h2>
             <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 font-secondary">
@@ -97,16 +110,6 @@ export default function Home() {
             <button className="px-6 md:px-8 py-3 md:py-4 bg-secondary text-primary font-bold rounded shadow-lg hover:bg-primary hover:text-secondary transition text-base md:text-lg">
               Learn More
             </button>
-          </div>
-          <div className="lg:w-1/2">
-            <div className="relative w-full md:w-[594px] h-[400px] md:h-[708px] overflow-hidden">
-              <Image
-                src="/images/about-aura.webp"
-                alt="tourists"
-                fill
-                className="object-cover"
-              />
-            </div>
           </div>
         </div>
       </section>
