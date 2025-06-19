@@ -9,75 +9,111 @@ export default function AboutUs() {
         title="About Us"
       />
       
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-start gap-12">
-          {/* Left Section: Our Story */}
-          <div className="lg:w-1/2">
-            <p className="text-lg text-gray-600 font-secondary mb-2">Our Story</p>
-            <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">A Lifelong Passion for East Africa</h2>
-            <p className="text-gray-700 mb-6 font-secondary">
-              Aura Safaris is the realization of a lifelong passion for African travel, born
-              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
-              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
-              cultures and breathtaking landscapes, shee developed a deep appreciation for
-              the transformative power of travel.
-            </p>
-            <p className="text-gray-700 mb-6 font-secondary">
-              Aura Safaris is the realization of a lifelong passion for African travel, born
-              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
-              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
-              cultures and breathtaking landscapes, shee developed a deep appreciation for
-              the transformative power of travel.
-            </p>
-            <p className="text-gray-700 mb-8 font-secondary">
-              Aura Safaris is the realization of a lifelong passion for African travel, born
-              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
-              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
-              cultures and breathtaking landscapes, shee developed a deep appreciation for
-              the transformative power of travel.
-            </p>
+      <section className="py-8 md:py-16 bg-white">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-start gap-8 md:gap-12">
+          {/* Images Section - First on mobile */}
+          <div className="w-full lg:w-1/2 order-1 lg:order-2 mb-8 lg:mb-0">
+            <div className="flex md:hidden overflow-x-auto gap-4 pb-4 -mx-4 px-4">
+              <div className="flex-none w-[250px]">
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/woman-with-binnocular.webp"
+                    alt="woman with binnocular"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
+              <div className="flex-none w-[250px]">
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/masai-dance.webp"
+                    alt="Masai dance"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="flex-none w-[250px]">
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/tourist.webp"
+                    alt="tourist"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden md:flex flex-row gap-8 justify-center items-center">
+              <div className="flex flex-col gap-8 w-1/2 items-center">
+                <div className="relative w-full aspect-[4/5] max-w-[205px] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/woman-with-binnocular.webp"
+                    alt="woman with binnocular"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="relative w-full aspect-[4/5] max-w-[205px] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/masai-dance.webp"
+                    alt="Masai dance"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 flex items-center justify-center">
+                <div className="relative w-full aspect-[4/5] max-w-[205px] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/tourist.webp"
+                    alt="tourist"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Right Section: Images */}
-          <div className="lg:w-1/2 flex flex-col md:flex-row gap-8 justify-center items-center">
-            <div className="flex flex-col gap-8 w-full md:w-1/2 items-center">
-              <div className="relative overflow-hidden rounded-[30px]" style={{ width: '205px', height: '248px' }}>
-                <Image
-                  src="/images/woman-with-binnocular.webp"
-                  alt="woman with binnocular"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-[30px]" style={{ width: '205px', height: '248px' }}>
-                <Image
-                  src="/images/masai-dance.webp"
-                  alt="Masai dance"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 flex items-center justify-center">
-              <div className="relative overflow-hidden rounded-[30px]" style={{ width: '205px', height: '248px' }}>
-                <Image
-                  src="/images/tourist.webp"
-                  alt="tourist"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+          {/* Text Section - Second on mobile */}
+          <div className="w-full lg:w-1/2 order-2 lg:order-1">
+            <p className="text-base md:text-lg text-gray-600 font-secondary mb-2">Our Story</p>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary font-primary leading-tight break-words">A Lifelong Passion for East Africa</h2>
+            <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 font-secondary">
+              Aura Safaris is the realization of a lifelong passion for African travel, born
+              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
+              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
+              cultures and breathtaking landscapes, shee developed a deep appreciation for
+              the transformative power of travel.
+            </p>
+            <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 font-secondary">
+              Aura Safaris is the realization of a lifelong passion for African travel, born
+              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
+              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
+              cultures and breathtaking landscapes, shee developed a deep appreciation for
+              the transformative power of travel.
+            </p>
+            <p className="text-sm md:text-base text-gray-700 mb-6 md:mb-8 font-secondary">
+              Aura Safaris is the realization of a lifelong passion for African travel, born
+              from the experiences of its founder, Laura. Though raised in Uganda, Laura's early years were marked by
+              extensive journeys across Asia, Africa, and Europe. Immersed in diverse
+              cultures and breathtaking landscapes, shee developed a deep appreciation for
+              the transformative power of travel.
+            </p>
           </div>
         </div>
       </section>
 
       {/* PHILOSOPHY SECTION */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row-reverse items-center gap-12">
-          {/* Right Section: Image */}
-          <div className="lg:w-1/2">
-            <div className="relative overflow-hidden" style={{ width: '587px', height: '838px' }}>
+      <section className="py-8 md:py-16 bg-gray-100">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+          {/* Image Section - First on mobile */}
+          <div className="w-full lg:w-1/2 order-1 lg:order-2 mb-8 lg:mb-0">
+            <div className="relative w-full aspect-[3/4] max-w-[587px] mx-auto overflow-hidden rounded-lg">
               <Image
                 src="/images/lions.webp"
                 alt="Lioness"
@@ -87,16 +123,16 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Left Section: Text Content */}
-          <div className="lg:w-1/2">
-            <p className="text-lg text-gray-600 font-secondary mb-2">Product Philosophy</p>
-            <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">Journeys that are more than just vacations</h2>
-            <p className="text-gray-700 mb-6 font-secondary">
+          {/* Text Section - Second on mobile */}
+          <div className="w-full lg:w-1/2 order-2 lg:order-1">
+            <p className="text-base md:text-lg text-gray-600 font-secondary mb-2">Product Philosophy</p>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary font-primary leading-tight break-words">Journeys that are more than just vacations</h2>
+            <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 font-secondary">
               At Aura Safaris, our product philosophy is centered on crafting
               journeys that are more than just vacations; they are transformative
               experiences that leave a positive and lasting impact.
             </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-3 font-secondary">
+            <ul className="list-disc list-inside text-sm md:text-base text-gray-700 space-y-3 font-secondary">
               <li>
                 <span className="font-semibold">Authentic Exploration:</span> We go beyond the surface, seeking genuine
                 encounters with the people, cultures, and landscapes of East Africa.
@@ -127,7 +163,7 @@ export default function AboutUs() {
                 connection, and respect for the world around us.
               </li>
             </ul>
-            <p className="text-gray-700 mt-8 font-secondary">
+            <p className="text-sm md:text-base text-gray-700 mt-6 md:mt-8 font-secondary">
               Our tours are designed to not only showcase the iconic attractions of
               East Africa but also to offer opportunities for meaningful interaction and
               responsible exploration, creating a travel experience that is both
@@ -138,13 +174,25 @@ export default function AboutUs() {
       </section>
 
       {/* EXPERTISE SECTION */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row-reverse items-center gap-12">
-          {/* Right Section: Text Content */}
-          <div className="lg:w-1/2">
-            <p className="text-lg text-gray-600 font-secondary mb-2">Why Aura Safaris</p>
-            <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">Expertise and Personalized Service</h2>
-            <p className="text-gray-700 mb-6 font-secondary">
+      <section className="py-8 md:py-16 bg-gray-100">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+          {/* Image Section - First on mobile */}
+          <div className="w-full lg:w-1/2 order-1 lg:order-2 mb-8 lg:mb-0">
+            <div className="relative w-full aspect-[3/4] max-w-[587px] mx-auto overflow-hidden rounded-lg">
+              <Image
+                src="/images/monkey.webp"
+                alt="Monkey"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+
+          {/* Text Section - Second on mobile */}
+          <div className="w-full lg:w-1/2 order-2 lg:order-1">
+            <p className="text-base md:text-lg text-gray-600 font-secondary mb-2">Why Aura Safaris</p>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary font-primary leading-tight break-words">Expertise and Personalized Service</h2>
+            <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 font-secondary">
               Aura Safaris distinguishes itself through a deep-rooted passion for
               Uganda and East Africa, combined with a strong commitment to
               sustainable and responsible tourism. Based locally, our expertise
@@ -156,7 +204,7 @@ export default function AboutUs() {
               you travel with Hutland Tours, you're not just exploring, you're
               contributing to a positive future for this remarkable region.
             </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-3 font-secondary">
+            <ul className="list-disc list-inside text-sm md:text-base text-gray-700 space-y-3 font-secondary">
               <li>
                 <span className="font-semibold">Our Expertise:</span> Aura Safaris is more than a tour operator; we are a
                 team of passionate African travel specialists. With years of
@@ -191,29 +239,17 @@ export default function AboutUs() {
               </li>
             </ul>
           </div>
-
-          {/* Left Section: Image */}
-          <div className="lg:w-1/2">
-            <div className="relative overflow-hidden" style={{ width: '587px', height: '838px' }}>
-              <Image
-                src="/images/monkey.webp"
-                alt="Monkey"
-                fill
-                className="object-cover object-center"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
       {/* CHECK NOW SECTION */}
-      <section className="py-16 bg-white text-center">
+      <section className="py-8 md:py-16 bg-white text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-bold mb-6 text-primary font-primary leading-tight">Ready To Explore Our Packages & Book Your Trip?</h2>
-          <p className="text-gray-700 mb-8 font-secondary">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary font-primary leading-tight break-words">Ready To Explore Our Packages & Book Your Trip?</h2>
+          <p className="text-sm md:text-base text-gray-700 mb-6 md:mb-8 font-secondary">
             Explore our trips and packages. Kindly use the button below to check them out now!
           </p>
-          <button className="px-8 py-4 bg-secondary text-primary font-bold rounded shadow-lg hover:bg-primary hover:text-secondary transition text-lg">
+          <button className="px-6 md:px-8 py-3 md:py-4 bg-secondary text-primary font-bold rounded shadow-lg hover:bg-primary hover:text-secondary transition text-base md:text-lg">
             Check Now
           </button>
         </div>
